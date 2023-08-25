@@ -1,0 +1,15 @@
+{
+  "base_url": "https://jupiter2.cloud.planittesting.com/",
+  "assert_Base_Url": "https://jupiter2.cloud.planittesting.com/#/shop",
+  "assert_Contact_Page_Url": "https://jupiter.cloud.planittesting.com/#/contact",
+  "forename": "",
+  "forenameErr": "Forename is required",
+  "email": "",
+  "emailErr": "Email is required",
+  "message": "",
+  "messageErr": "Message is required",
+  "cartCountTc3": "3",
+  "cartCountTc4": "10",
+  "assertFunnyCow": " Funny Cow",
+  "assertFluffyBunny": " Fluffy Bunny"
+}

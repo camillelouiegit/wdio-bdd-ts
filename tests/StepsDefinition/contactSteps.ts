@@ -1,0 +1,67 @@
+import Helpers from "../utils/helpers";
+import ContactHelpers from "../utils/contactHelpers";
+import generatedName from "../resources/generatedName.json";
+import generateRandom from "../utils/generate-random";
+import contactPage from "../pageobjects/contact.page";
+import TestData from "../resources/test-data.json";
+import commonSteps from "./commonSteps";
+
+class ContactSteps extends Helpers {
+  /**
+   * submitFeedback() function to be called in specs
+   */
+  submitFeedback = async ({ forename, email, message }: ContactHelpers) => {
+    await this.populateContactMandatoryFields(forename, email, message);
+    if (forename && email && message) {
+      await this.validateSuccessMessageIsDisplayed(forename);
+    } else {
+      await this.validateErrorMessageIsDisplayed();
+    }
+  };
+
+  populateContactMandatoryFields = async (
+    forename?: string,
+    email?: string,
+    message?: string
+  ) => {
+    // Generate random name
+    generateRandom.name();
+
+    if (forename) {
+      await this.setText(contactPage.forename, forename);
+    }
+
+    if (email) {
+      await this.setText(contactPage.email, email);
+    }
+
+    if (message) {
+      await this.setText(contactPage.message, generateRandom.message);
+    }
+
+    await this.click(contactPage.submitButton, "Submit");
+  };
+
+  async validateSuccessMessageIsDisplayed(name?: string) {
+    expect(contactPage.alertSuccess).toBeDisplayed();
+
+    await this.assertText(
+      (await (await contactPage.alertSuccess).getText()).toString(),
+      "Thanks " + name + ", we appreciate your feedback."
+    );
+
+    await browser.takeScreenshot();
+  }
+
+  async validateErrorMessageIsDisplayed() {
+    expect(contactPage.alertSuccess).toBeDisplayed();
+
+    await this.assertText(
+      (await (await contactPage.alertError).getText()).toString(),
+      "We welcome your feedback - but we won't get it unless you complete the form correctly."
+    );
+
+    await browser.takeScreenshot();
+  }
+}
+export default new ContactSteps();

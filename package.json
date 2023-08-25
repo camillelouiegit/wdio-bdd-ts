@@ -1,0 +1,46 @@
+{
+  "name": "jupiter",
+  "version": "1.0.0",
+  "description": "UI test framework for planit-jupiter assesment",
+  "scripts": {
+    "web.browser": "wdio config/wdio.web.browser.ts",
+    "web.browser.testcase1": "wdio config/wdio.web.browser.ts --spec=tests/specs/test-case-1.ts",
+    "web.browser.testcase2": "wdio config/wdio.web.browser.ts --spec=tests/specs/test-case-2.ts",
+    "web.browser.testcase3": "wdio config/wdio.web.browser.ts --spec=tests/specs/test-case-3.ts",
+    "web.browser.testcase4": "wdio config/wdio.web.browser.ts --spec=tests/specs/test-case-4.ts",
+    "allure.reports": "allure generate reports/allure-results -o reports/allure-reports --clean && allure open reports/allure-reports"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/camillelouiegit/planit-wdio"
+  },
+  "keywords": [
+    "WebdriverIO",
+    "WebDriver"
+  ],
+  "author": "Camille Louie Olarte",
+  "license": "",
+  "homepage": "https://jupiter.cloud.planittesting.com/",
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.25.0",
+    "@typescript-eslint/parser": "^5.25.0",
+    "@wdio/allure-reporter": "^7.23.0",
+    "@wdio/appium-service": "^7.19.5",
+    "@wdio/browserstack-service": "^7.19.7",
+    "@wdio/cli": "^7.19.7",
+    "@wdio/firefox-profile-service": "^8.15.0",
+    "@wdio/local-runner": "^7.19.7",
+    "@wdio/mocha-framework": "^7.19.7",
+    "@wdio/sauce-service": "^7.19.7",
+    "@wdio/spec-reporter": "^7.19.7",
+    "appium-xcuitest-driver": "^4.9.0",
+    "config-yml": "^0.10.3",
+    "eslint-plugin-wdio": "^7.19.4",
+    "ts-node": "^10.8.0",
+    "typescript": "^4.6.4"
+  },
+  "dependencies": {
+    "js-yaml": "^4.1.0",
+    "yaml": "^2.1.0"
+  }
+}
