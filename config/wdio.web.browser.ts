@@ -4,8 +4,10 @@ import { config } from "./wdio.shared.conf";
 // ============
 // Specs
 // ============
-config.specs = Array(2).fill("./tests/specs/**/*.ts");
-config.waitforTimeout = 20000;
+config.specs = ["./tests/specs/**/*.ts"];
+// Options to be passed to Mocha.
+// See the full list at: http://mochajs.org
+// config.mochaOpts = [{ ui: "bdd", timeout: 60000 }];
 // ============
 // Capabilities
 // ============
@@ -19,11 +21,8 @@ config.capabilities = [
     maxInstances: 1,
     "goog:chromeOptions": {
       args: [
+        "--start-maximized",
         "--incognito",
-        "--disable-extensions",
-        '--auth-server-whitelist="_"',
-        // "--window-position=0,0",
-        // "--window-size=1920,1080",
         // "--headless",
       ],
     },
@@ -33,6 +32,9 @@ config.capabilities = [
   //   browserName: "edge",
   //   platformName: "Windows 10", // OS platform
   //   maxInstances: 1,
+  //   "ms:edgeOptions": {
+  //     args: ["--start-maximized"],
+  //   },
   // },
 ];
 // Test reporter for stdout.

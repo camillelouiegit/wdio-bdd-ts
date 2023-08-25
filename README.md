@@ -8,24 +8,18 @@ This is currently based on:
 
 1. Install the recommended or latest NodeJS version here: https://nodejs.org/en/download
 2. Clone this Repository
-3. Open cloned Repo via cli or terminal and enter `npm install`
+3. Open cloned Repo via cli or terminal and enter <br>`npm install`
 
 ## Run Tests
 
-3. Enter in terminal:
-   - **npm run web.browser //run all test cases `Refactoring`**
-   - **npm run web.browser.testcase1 //run tc1 only `Refactoring`**
-   - **npm run web.browser.testcase2 //run tc2 only `(Latest and running)`**
-   - **npm run web.browser.testcase3 //run tc3 only `Refactoring`**
-   - **npm run web.browser.testcase4 //run tc4 only `Refactoring`**
+3. Enter in terminal or commandline:
 
-## Configure how many times Tests will run
+   - **npm run web.browser** _(executes and run all test cases) _
 
-4. Open /config/wdio.web.browser.ts:
-   - Change Array(x) **config.specs = Array(x)**
+   - **npm run web.browser.testcase2** _(executes and run tc2 only) `(Latest and running)`_
 
 ## Generate a graphical html report (Allure Reports)
 
 5. Enter in terminal:
 
-- **npm run allure.reports //This will automatically opens the Allure html report**
+- **npm run allure.reports** _(This will generate and opens Allure html report)_

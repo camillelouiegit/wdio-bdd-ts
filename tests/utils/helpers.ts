@@ -3,7 +3,6 @@ export default class Page {
    * @element {any} provide element when calling the function
    */
   async click(element: any, text: string) {
-    await element.waitForExist();
     await element.click();
     console.log("[INFO]" + '"' + text + '"' + " is clicked");
   }
@@ -21,19 +20,18 @@ export default class Page {
    * @text {String} provide text value when calling the function
    */
   async setText(element: any, text: string) {
-    await element.waitForExist();
     await element.setValue(text);
     console.log("[INFO]" + '"' + text + '"' + " is entered.");
   }
 
   /**
-   * @element {Element} provide element when calling the function
+   * @actual {String} provide actual value when calling the function
    * @expected {String} provide expected value when calling the function
    */
   async assertText(actual: string, expected: string) {
     expect(actual).toEqual(expected);
-    console.log("[INFO]Actual: " + actual);
-    console.log("[INFO]expected: " + expected);
+    console.log("[INFO]Actual Text: " + actual);
+    console.log("[INFO]Expected Text: " + expected);
   }
 
   /**

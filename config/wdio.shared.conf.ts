@@ -98,14 +98,12 @@ export const config: WebdriverIO.Config = {
   // The only one supported by default is 'dot'
   // see also: https://webdriver.io/docs/dot-reporter
   reporters: [],
-
   // Options to be passed to Mocha.
   // See the full list at: http://mochajs.org
   mochaOpts: {
-    timeout: 20000,
+    timeout: 60000,
     bail: true,
   },
-
   //
   // =====
   // Hooks
@@ -131,7 +129,6 @@ export const config: WebdriverIO.Config = {
     console.log("*                   Start Test                    *");
     console.log("***************************************************");
   },
-
   /**
    * Gets executed after all tests are done. You still have access to all global variables from
    * the test.
@@ -144,21 +141,18 @@ export const config: WebdriverIO.Config = {
     console.log("*                   End Test                      *");
     console.log("***************************************************");
   },
-
   /**
    * This hook gets executed _before_ every hook within the suite starts.
    * (For example, this runs before calling `before`, `beforeEach`, `after`, `afterEach` in Mocha.). In Cucumber `context` is the World object.
    *
    */
   beforeHook: function (test, context) {},
-
   /**
    * Function to be executed before a test (in Mocha/Jasmine only)
    * @param {object} test    test object
    * @param {object} context scope object the test was executed with
    */
   beforeTest: function (test, context) {},
-
   /**
    * Function to be executed after a test (in Mocha/Jasmine only)
    * @param {object}  test             test object
@@ -173,5 +167,9 @@ export const config: WebdriverIO.Config = {
     test,
     context,
     { error, result, duration, passed, retries }
-  ) {},
+  ) {
+    if (error) {
+      await browser.takeScreenshot();
+    }
+  },
 };

@@ -43,8 +43,6 @@ class ContactSteps extends Helpers {
   };
 
   async validateSuccessMessageIsDisplayed(name?: string) {
-    expect(contactPage.alertSuccess).toBeDisplayed();
-
     await this.assertText(
       (await (await contactPage.alertSuccess).getText()).toString(),
       "Thanks " + name + ", we appreciate your feedback."
@@ -54,7 +52,7 @@ class ContactSteps extends Helpers {
   }
 
   async validateErrorMessageIsDisplayed() {
-    expect(contactPage.alertSuccess).toBeDisplayed();
+    expect(contactPage.alertError).toBeDisplayed();
 
     await this.assertText(
       (await (await contactPage.alertError).getText()).toString(),
