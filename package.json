@@ -3,12 +3,9 @@
   "version": "1.0.0",
   "description": "UI test framework for planit-jupiter assesment",
   "scripts": {
-    "web.browser": "wdio config/wdio.web.browser.ts",
-    "web.browser.testcase1": "wdio config/wdio.web.browser.ts --spec=tests/specs/test-case-1.ts",
-    "web.browser.testcase2": "wdio config/wdio.web.browser.ts --spec=tests/specs/test-case-2.ts",
-    "web.browser.testcase3": "wdio config/wdio.web.browser.ts --spec=tests/specs/test-case-3.ts",
-    "web.browser.testcase4": "wdio config/wdio.web.browser.ts --spec=tests/specs/test-case-4.ts",
-    "allure.reports": "allure generate reports/allure-results -o reports/allure-reports --clean && allure open reports/allure-reports"
+    "web.suite": "wdio config/wdio.web.browser.ts --suite",
+    "web.specs.contact": "wdio config/wdio.web.browser.ts --spec tests/specs/contact-specs.ts",
+    "allure.reports": "allure open reports/allure-reports"
   },
   "repository": {
     "type": "git",
@@ -40,6 +37,7 @@
     "typescript": "^4.6.4"
   },
   "dependencies": {
+    "allure-commandline": "^2.24.0",
     "js-yaml": "^4.1.0",
     "yaml": "^2.1.0"
   }

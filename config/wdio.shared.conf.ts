@@ -3,6 +3,7 @@
  * If you want to know which configuration options you have then you can
  * check https://webdriver.io/docs/configurationfile
  */
+
 export const config: WebdriverIO.Config = {
   //
   // ====================
@@ -171,5 +172,38 @@ export const config: WebdriverIO.Config = {
     if (error) {
       await browser.takeScreenshot();
     }
+  },
+  /**
+   * Gets executed after all workers have shut down and the process is about to exit.
+   * An error thrown in the `onComplete` hook will result in the test run failing.
+   * @param {object} exitCode 0 - success, 1 - fail
+   * @param {object} config wdio configuration object
+   * @param {Array.<Object>} capabilities list of capabilities details
+   * @param {<Object>} results object containing test results
+   */
+  onComplete: function (exitCode, config, capabilities, results) {
+    var allure = require("allure-commandline");
+    const reportError = new Error("[INFO] Could not generate Allure report");
+    const generation = allure([
+      "generate",
+      "reports/allure-results",
+      "--clean",
+      "-o",
+      "reports/allure-reports",
+    ]);
+    return new Promise<void>((resolve, reject) => {
+      const generationTimeout = setTimeout(() => reject(reportError), 5000);
+
+      generation.on("exit", function (exitCode: number) {
+        clearTimeout(generationTimeout);
+
+        if (exitCode !== 0) {
+          return reject(reportError);
+        }
+
+        console.log("[INFO] Allure report successfully generated");
+        resolve();
+      });
+    });
   },
 };

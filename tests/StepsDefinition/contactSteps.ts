@@ -1,9 +1,7 @@
 import Helpers from "../utils/helpers";
 import ContactHelpers from "../utils/contactHelpers";
-import generatedName from "../resources/generatedName.json";
 import generateRandom from "../utils/generate-random";
 import contactPage from "../pageobjects/contact.page";
-import TestData from "../resources/test-data.json";
 import commonSteps from "./commonSteps";
 
 class ContactSteps extends Helpers {
@@ -11,6 +9,7 @@ class ContactSteps extends Helpers {
    * submitFeedback() function to be called in specs
    */
   submitFeedback = async ({ forename, email, message }: ContactHelpers) => {
+    await commonSteps.navigateTo("Contact");
     await this.populateContactMandatoryFields(forename, email, message);
     if (forename && email && message) {
       await this.validateSuccessMessageIsDisplayed(forename);
@@ -45,7 +44,7 @@ class ContactSteps extends Helpers {
   async validateSuccessMessageIsDisplayed(name?: string) {
     await this.assertText(
       (await (await contactPage.alertSuccess).getText()).toString(),
-      "Thanks " + name + ", we appreciate your feedback."
+      `Thanks ${name}, we appreciate your feedback.`
     );
 
     await browser.takeScreenshot();

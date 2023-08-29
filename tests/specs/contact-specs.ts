@@ -13,7 +13,6 @@ describe("Feature: Submit Feedback in Contact page", () => {
   // Runs before every it()
   beforeEach(() => {
     browser.url(TestData.base_url);
-    commonSteps.navigateTo("Contact");
   });
 
   // Runs after every it()
@@ -25,6 +24,7 @@ describe("Feature: Submit Feedback in Contact page", () => {
     // ---- Test Case
     it("Test Case 1: Submit feedback with valid values", async () => {
       // Steps
+      console.log("Test Case 1: Submit feedback with valid values");
       await contactSteps.submitFeedback({
         forename: "test",
         email: "test@test.com",
@@ -37,10 +37,13 @@ describe("Feature: Submit Feedback in Contact page", () => {
     // ---- Test Case
     it("Test Case 2: Submit feedback with blank values", async () => {
       // Steps
+      console.log("Test Case 2: Submit feedback with blank values");
       await contactSteps.submitFeedback({});
     });
 
     it("Test Case 3: Submit feedback with blank forename", async () => {
+      console.log("Test Case 3: Submit feedback with blank forename");
+
       await contactSteps.submitFeedback({
         email: "test@test.com",
         message: "test message",
