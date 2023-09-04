@@ -3,9 +3,9 @@
   "version": "1.0.0",
   "description": "UI test framework for planit-jupiter assesment",
   "scripts": {
-    "web.suite": "wdio config/wdio.web.browser.ts --suite",
-    "web.specs.contact": "wdio config/wdio.web.browser.ts --spec tests/specs/contact-specs.ts",
-    "allure.reports": "allure open reports/allure-reports"
+    "web:suites": "wdio config/wdio.web.browser.conf.ts --suite",
+    "web:specs": "wdio config/wdio.web.browser.conf.ts --spec",
+    "allure:reports": "allure open reports/allure-reports"
   },
   "repository": {
     "type": "git",

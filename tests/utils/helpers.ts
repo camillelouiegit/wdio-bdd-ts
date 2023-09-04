@@ -1,4 +1,4 @@
-export default class Page {
+export default class Helper {
   /**
    * @element {any} provide element when calling the function
    */
@@ -8,20 +8,20 @@ export default class Page {
   }
 
   /**
-   * @element {any} provide element when calling the function
-   * @text {String} provide text value when calling the function
-   */
-  async selectDropdown(element: any, text: any) {
-    await element.selectByAttribute("value", text);
-  }
-
-  /**
    * @element {Element} provide element when calling the function
    * @text {String} provide text value when calling the function
    */
   async setText(element: any, text: string) {
     await element.setValue(text);
     console.log("[INFO]" + '"' + text + '"' + " is entered.");
+  }
+
+  /**
+   * @element {any} provide element when calling the function
+   * @text {String} provide text value when calling the function
+   */
+  async selectDropdown(element: any, text: any) {
+    await element.selectByAttribute("value", text);
   }
 
   /**

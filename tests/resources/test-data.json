@@ -1,6 +1,6 @@
 {
   "base_url": "https://jupiter2.cloud.planittesting.com/",
-  "assert_Base_Url": "https://jupiter2.cloud.planittesting.com/#/shop",
+  "assert_Base_Url": "https://jupiter2.cloud.planittesting.com/",
   "assert_Contact_Page_Url": "https://jupiter.cloud.planittesting.com/#/contact",
   "forename": "",
   "forenameErr": "Forename is required",
